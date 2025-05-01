@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raining Emoticons</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: black;
+            color: white;
+        }
+        .emoticon {
+            position: absolute;
+            font-size: 2rem;
+            color: white;
+            animation: fall infinite linear;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(-100%);
+            }
+            100% {
+                transform: translateY(110vh);
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        const emoticons = ['૮₍  ˶•⤙•˶ ₎ა', '(´｡• ᵕ •｡`)', '૮ ˶ᵔ ᵕ ᵔ˶ ა', '✧', '(´｡• ω •｡`)', '\(★ω★)/', '☆', '(｡♥‿♥｡)', '(* >ω<)', 'ヽ(>∀<☆)ノ'];
+        const createEmoticon = () => {
+            const emoticon = document.createElement('div');
+            emoticon.classList.add('emoticon');
+            emoticon.textContent = emoticons[Math.floor(Math.random() * emoticons.length)];
+            
+            // Randomize starting position and animation duration
+            emoticon.style.left = Math.random() * 100 + 'vw';
+            emoticon.style.animationDuration = Math.random() * 3 + 2 + 's';
+            emoticon.style.fontSize = Math.random() * 1.5 + 1 + 'rem';
+            
+            document.body.appendChild(emoticon);
+            
+            // Remove emoticon after animation
+            setTimeout(() => {
+                emoticon.remove();
+            }, 5000);
+        };
+
+        // Create emoticons at intervals
+        setInterval(createEmoticon, 200);
+    </script>
+</body>
+</html>
